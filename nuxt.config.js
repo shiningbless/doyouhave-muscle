@@ -24,11 +24,20 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    { src: '~/assets/scss/style.scss' }
   ],
+
+  styleResources: {
+    scss: [
+      { src: '~/assets/scss/foundation/_variable.scss' },
+      { src: '~/assets/scss/foundation/_mixins.scss' },
+      { src: '~/assets/scss/foundation/_function.scss' }
+    ]
+  },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    'main.js'
+    { src: '~/init.js' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -46,6 +55,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios'
+    // '@nuxtjs/style-resources'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -53,9 +63,9 @@ export default {
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
+    customVariables: ['~/assets/scss/vuetify.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,

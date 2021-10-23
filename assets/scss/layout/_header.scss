@@ -1,0 +1,22 @@
+.l-header{
+  height: 64px;
+  background: $_red;
+  @include flex;
+  @include justify-content(space-between);
+  @include align-items(center);
+  padding: 0 calc(50% - 480px);
+  &-left{
+    @include flex;
+    @include align-items(center);
+    color: $_white;
+    font-size: map-get($_font-size, md);
+  }
+  &-right{
+    &-link{
+      color: $_white !important;
+      display: inline-block;
+      margin-left: 16px;
+      font-size: map-get($_font-size, md);
+    }
+  }
+}

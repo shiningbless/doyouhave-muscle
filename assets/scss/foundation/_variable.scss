@@ -1,0 +1,255 @@
+
+// default breakpoint
+$_default-breakpoint: 'pc';
+
+// default wrapper width
+$_max-width: 960px !default;
+
+// default grid columns
+$_column: 12 !default;
+
+// base font-size
+$_font-size: (
+	'min': 12px,
+  'sm': 14px,
+  'md': 16px,
+  'nm': 20px,
+  'bk': 24px,
+  'lg': 32px,
+  'kl': 40px,
+  'mg': 48px,
+  'headline': 64px,
+  'h1': 96px,
+) !default;
+
+$_font-size--large: 16px !default;
+$_font-size--small: 0.8em !default;
+
+// base font-weight
+$_font-weight: (
+  'medium': 400,
+  'semibold': 600,
+  'bold': 700,
+) !default;
+
+// base Rounded corners
+$_radius: 3px !default;
+
+// base animation speed
+$_duration: 0.3s !default;
+
+// base spacing
+$_white-space: 1.7px !default;
+$_white-space--small: ($_white-space / 2) !default;
+$_white-space--large: ($_white-space * 2) !default;
+
+// sidebar width size
+$sidebar-width: 56px !default;
+$tableth-height: 36px !default;
+$cell-height: 24px !default;
+$cell-width: 120px !default;
+
+// icon width size
+$icon-width-middle: 24px !default;
+// z-indexが定義されていない要素は`z-index:0;`として描画されます。
+// 同じz-indexを持つ要素はスタック文脈が同じであればHTMLの記述順に依存します。
+// なるべく数値はユニーク（一意）にして、シンプルに管理できるようにします。
+// @see - 'e-z-index()' (foundation/function/_z-index.scss)
+$_z-index: (
+  'below': -100,
+  'default': 100,
+  'fixNav': 200,
+  'modal': 300,
+) !default;
+
+// min-width
+$_breakpoint-up: (
+  'sp': screen and (min-width: 400px),
+  'tab': screen and (min-width: 768px),
+  'pc': screen and (min-width: 1080px),
+  'dt': screen and (min-width: 1600px),
+) !default;
+
+// max-width
+$_breakpoint-down: (
+  'sm': screen and (max-width: 399px),
+  'sp': screen and (max-width: 767px),
+  'tab': screen and (max-width: 1080px),
+  'pc': screen and (max-width: 1600px),
+) !default;
+// base color
+$_color-text: #000 !default;
+$_color-bg: #fff !default;
+
+// link color
+$_color-link: #2b70ba !default;
+$_color-link--visited: null !default;
+$_color-link--hover: lighten($_color-link, 15%) !default;
+
+// component color
+$_color-ui-border: #ddd !default;
+$_color-ui-bg: #fff !default;
+
+// palets
+$_black: #333333;
+$_white: #FCFCFC;
+$_offwhite: #E4E3DB;
+$_gray: #C5BEBA;
+$_grayF2: #F2F2F2;
+$_grayA: #AAAAAA;
+$_grayC: #CCCCCC;
+$_gray6: #666666;
+$_lightGray: #F0F2ED;
+$_red: #C5001A;
+$_yellow: #FFCE38;
+$_green: #44D316;
+
+$_twitter: #1DA1F2;
+$_instagram: linear-gradient(90deg, #4C64D3, #CF2E92, #F26939, #FFDD83);
+
+// `transition-timing-function`と`animation-timing-function`プロパティに指定する、
+// cubic-bezier() 関数記法で定義した、3次ベジェ曲線のタイミング関数です。
+// 実際に動きは、以下のサイトで確認できます。
+// https://matthewlein.com/ceaser/
+//
+// デフォルトのタイミング関数には以下のような特徴があります。
+// easeは「ゆっくりと」、inは「始まる」、outは「終わる」に置き換えると想像しやすいです。
+// * linear - 一定の速度で変化する
+// * ease - 開始時から急速に加速して、中盤から緩やかになる
+// * ease-in - 緩やかに始まり、次第に加速し、突然停止する
+// * ease-in-out - 緩やかに始まり、加速が緩やかになっていく
+// * ease-out - 急速に始まり、次第に緩やかになっていく
+
+$_linear: cubic-bezier( 0.250, 0.250, 0.750, 0.750 ) !default;
+$_ease: cubic-bezier( 0.250, 0.100, 0.250, 1.000 ) !default;
+
+// ease
+$_ease-in: cubic-bezier( 0.420, 0.000, 1.000, 1.000 ) !default;
+$_ease-in-quad: cubic-bezier( 0.550, 0.085, 0.680, 0.530 ) !default;
+$_ease-in-cubic: cubic-bezier( 0.550, 0.055, 0.675, 0.190 ) !default;
+$_ease-in-quart: cubic-bezier( 0.895, 0.030, 0.685, 0.220 ) !default;
+$_ease-in-quint: cubic-bezier( 0.755, 0.050, 0.855, 0.060 ) !default;
+$_ease-in-sine: cubic-bezier( 0.470, 0.000, 0.745, 0.715 ) !default;
+$_ease-in-expo: cubic-bezier( 0.950, 0.050, 0.795, 0.035 ) !default;
+$_ease-in-circ: cubic-bezier( 0.600, 0.040, 0.980, 0.335 ) !default;
+$_ease-in-back: cubic-bezier( 0.600, -0.280, 0.735, 0.045 ) !default;
+
+// ease-out
+$_ease-out: cubic-bezier( 0.000, 0.000, 0.580, 1.000 ) !default;
+$_ease-out-quad: cubic-bezier( 0.250, 0.460, 0.450, 0.940 ) !default;
+$_ease-out-cubic: cubic-bezier( 0.215, 0.610, 0.355, 1.000 ) !default;
+$_ease-out-quart: cubic-bezier( 0.165, 0.840, 0.440, 1.000 ) !default;
+$_ease-out-quint: cubic-bezier( 0.230, 1.000, 0.320, 1.000 ) !default;
+$_ease-out-sine: cubic-bezier( 0.390, 0.575, 0.565, 1.000 ) !default;
+$_ease-out-expo: cubic-bezier( 0.190, 1.000, 0.220, 1.000 ) !default;
+$_ease-out-circ: cubic-bezier( 0.075, 0.820, 0.165, 1.000 ) !default;
+$_ease-out-back: cubic-bezier( 0.175, 0.885, 0.320, 1.275 ) !default;
+
+// ease-in-out
+$_ease-in-out: cubic-bezier( 0.420, 0.000, 0.580, 1.000 ) !default;
+$_ease-in-out-quad: cubic-bezier( 0.455, 0.030, 0.515, 0.955 ) !default;
+$_ease-in-out-cubic: cubic-bezier( 0.645, 0.045, 0.355, 1.000 ) !default;
+$_ease-in-out-quart: cubic-bezier( 0.770, 0.000, 0.175, 1.000 ) !default;
+$_ease-in-out-quint: cubic-bezier( 0.860, 0.000, 0.070, 1.000 ) !default;
+$_ease-in-out-sine: cubic-bezier( 0.445, 0.050, 0.550, 0.950 ) !default;
+$_ease-in-out-expo: cubic-bezier( 1.000, 0.000, 0.000, 1.000 ) !default;
+$_ease-in-out-circ: cubic-bezier( 0.785, 0.135, 0.150, 0.860 ) !default;
+$_ease-in-out-back: cubic-bezier( 0.680, -0.550, 0.265, 1.550 ) !default;
+// font-familyを定義しています。WindowsとMacで指定する名前が微妙に変わるので、
+// 半角スペースなどを変更しないようにしてください。
+
+// ## ゴシックとsans-serif
+// 欧文書体は"Helvetica Neue"か"Verdana"、
+// "Helvetica Neue"を指定する場合はWindowsのフォールバックに"Arial"か"Verdana"、
+// HelveticaはWindowsではArialとして表示される。
+// 和文書体は游ゴシックかヒラギノ角ゴ、游書体はWindowsのChromeで薄く表示される。
+// MS書体はアンチエイリアスが効かないために指定せず、メイリオを指定する。
+
+
+// 和欧混植、Helvetica優先、游ゴシックなし
+$_font-family-sans-serif-1: "Helvetica Neue", Helvetica, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif !default;
+// 和欧混植、Helvetica優先、游ゴシック優先
+$_font-family-sans-serif-2: "Helvetica Neue", Helvetica, "游ゴシック", YuGothic, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif !default;
+// 和欧混植、Verdana優先、游ゴシックなし
+$_font-family-sans-serif-3: Verdana, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif !default;
+// 和欧混植、Verdana優先、游ゴシック優先
+$_font-family-sans-serif-4: Verdana, "游ゴシック", YuGothic, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif !default;
+// 和文のみ、游ゴシックなし
+$_font-family-sans-serif-5: "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif !default;
+// 和文のみ、游ゴシック優先
+$_font-family-sans-serif-6: "游ゴシック", YuGothic, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif !default;
+// Noto Sans
+
+$_font-family-sans-serif-7: "Montserrat", "游ゴシック", YuGothic, Meiryo, sans-serif !default;
+
+//Noto Sans CJK
+$NotoSansCJk: futura-pt, noto-sans-cjk-jp, sans-serif;
+
+// Abobe Typekit ( A.M Acount )
+$acumin: acumin-pro-semi-condensed, sans-serif;
+
+
+// ## 明朝とserif
+// 欧文書体は"Times New Roman"か"Georgia"。
+// 和文書体は游明朝かヒラギノ明朝、游書体はWindowsのChromeで薄く表示される。
+// 古いWindows用に"HG明朝E"（Officeをインストールしていれば使える）、フォールバックとしてメイリオ。
+// "ＭＳ Ｐ明朝"はアンチエイリアスが効かないので指定しない。
+// Androidは明朝体に非対応。
+
+// 和欧混植、Times New Roman優先、游明朝なし
+$_font-family-serif-1: "Times New Roman", "Hiragino Mincho ProN", "HG明朝E", Meiryo, serif !default;
+// 和欧混植、Times New Roman優先、游明朝優先
+$_font-family-serif-2: "Times New Roman", "游明朝", "YuMincho", "Hiragino Mincho ProN", "HG明朝E", Meiryo, serif !default;
+// 和欧混植、Georgia優先、游明朝なし
+$_font-family-serif-3: Georgia, "Hiragino Mincho ProN", "HG明朝E", Meiryo, serif !default;
+// 和欧混植、Georgia優先、游明朝優先
+$_font-family-serif-4: Georgia, "游明朝", "YuMincho", "Hiragino Mincho ProN", "HG明朝E", Meiryo, serif !default;
+// 和文のみ、游明朝なし
+$_font-family-serif-5: "Hiragino Mincho ProN", "HG明朝E", Meiryo, serif !default;
+// 和文のみ、游明朝優先
+$_font-family-serif-6: "游明朝", "YuMincho", "Hiragino Mincho ProN", "HG明朝E", Meiryo, serif !default;
+
+// ## Macで追加できるフォント
+// ヒラギノ丸ゴ→ "ヒラギノ丸ゴ ProN", "Hiragino Maru Gothic ProN"
+// EL Captainで追加されたフォント。
+// 筑紫丸Aゴシック→ "TsukuARdGothic-Regular"（ふところを絞ったデザインの丸ゴシック体で和風、落ち着いた印象）
+// 筑紫丸Bゴシック→ "TsukuBRdGothic-Regular"（筑紫丸Aゴシックよりも特徴がある）
+// クレー→ "Klee"（鉛筆やペンのような手書き風で本文組みに適した書体）
+// ヒラギノ角ゴシック→ "Hiragino Sans"（ヒラギノ角ゴに10種類のウェイトを追加）
+// 游明朝体+36ポかな→ "YuMin_36pKn-Medium"（毛筆表現のある游明朝体で漢字と英数字は含んでいない）
+// San Francisco→ -apple-system
+
+// 主要なフォント。
+// 游ゴシック Windows8.1以降、MacOS10.9以降
+// 游明朝 Windows8.1以降、MacOS10.9以降
+// メイリオ Windows Vista以降
+// ヒラギノ角ゴ ProN Mac OS 10.5以降、iOS
+// ヒラギノ明朝 ProN Mac OS 10.5以降、iOS6以降
+// Droid Sans Android
+// Roboto Android4以降
+
+// WindowsとMacでの共通フォント。
+// Arial
+// Arial Black
+// Comic Sans MS
+// Courier
+// Courier New
+// Georgia
+// Impact
+// Times New Roman
+// Trebuchet MS
+// Verdana
+
+// ブラウザのデフォルトフォント
+// Safari 7 / Mac 10.9 Helvetica / ヒラギノ角ゴシック ProN
+// Firefox 25 / Mac 10.9 ヒラギノ角ゴシック ProN
+// Chrome 30 / Mac 10.9 ヒラギノ角ゴシック ProN
+// IE 11 / Win 8.1 メイリオ
+// IE 8 / Win 7 Arial / ＭＳ Ｐゴシック
+// Firefox 25 / Win 8.1 ＭＳ Ｐゴシック
+// Chrome 30 / Win 8.1 ＭＳ Ｐゴシック
+
+// Androidについて
+// * 明朝体には対応していない
+// * 4.0以降ではRobotoとモトヤフォントがデフォルト、それ以前はDroid Sans（Droid Sans Japaneseも含む）
+// * HelveticaかArialを指定するとブラウザ側でDroid Sansがエイリアスとして表示される

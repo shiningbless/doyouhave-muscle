@@ -1,0 +1,14 @@
+
+.c-headline{
+  font-size: map-get($_font-size, bk);
+  border-bottom: 1px solid $_red;;
+  text-align: center;
+  &__strong{
+    font-size: map-get($_font-size, lg);
+    color: $_red;
+    margin-right: 4px;
+  }
+  &-result{
+    font-size: map-get($_font-size, md);
+  }
+}

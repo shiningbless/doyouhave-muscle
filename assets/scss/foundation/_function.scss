@@ -1,0 +1,65 @@
+
+// @desc - pxをemに変換します。
+// @param {Number} $self - 指定したいpx。
+// @param {Number} $parent - 基準となるpx。
+// @example - _em(15px, 30px) => 0.5em
+@function _em($self, $parent) {
+  @return ($self / $parent) * 1em;
+}
+// @desc - pxをremに変換します。
+// @param {Number} - 指定したいピクセル値。
+// @param {String} $key [sm] - 指定するブレイクポイントを`$_font-size`のキーで指定。
+// @example - _rem(15px) => 1rem
+@function _rem($px, $key: 'sm') {
+  $value: map-get($_font-size, $key);
+  @return ($px / $value) * 1rem;
+}
+// @desc - 黒色を加えて明度を暗くします。
+// @param {String}
+// @example - _shade(blue, 50%) => navy
+@function _shade($color, $percent) {
+  @return mix(#000, $color, $percent);
+}
+// @desc - 渡した引数から単位を取り除きます。
+// @param {Number}
+// @example - _strip-unit(24rem); => 24
+@function _strip-unit($n) {
+  @return $n / ($n * 0 + 1);
+}
+// @desc - 白色を加えて明度を明るくします。
+// @param {String}
+// @example - _tint(blue, 50%) => #8080ff
+@function _tint($color, $percent) {
+  @return mix(#fff, $color, $percent);
+}
+// @desc - Photoshopのトラッキングの値を`em`に変換します。
+// @param {Number}
+// @example scss - Usage
+// .foo {
+//   letter-spacing: _tracking(50);
+// }
+// @example css - CSS Output
+// .foo {
+//   letter-spacing: 0.05em;
+// }
+@function _tracking($value) {
+  @return ($value / 1000) * 1em;
+}
+// @desc - '$z-index'のkeyから値を返します。
+// @param {String}
+// @see - foundation/variable/_z-index.scss
+// @author - Hugo Giraudel
+// @link http://www.sitepoint.com/better-solution-managing-z-index-sass/
+// @example - _z-index(default) => 1
+@function _z-index($layer) {
+  @if not map-has-key($_z-index, $layer) {
+    @error 'There is no layer named `#{$layer}` in $_z-index. '
+         + 'Layer should be one of #{map-keys($_z-index)}.';
+  }
+  @return map-get($_z-index, $layer);
+}
+
+
+@function img-url($img){
+  @return url('/wp-content/themes/freelanceya/library/img/#{$img}');
+}

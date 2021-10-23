@@ -1,0 +1,14 @@
+@import './foundation/_variable.scss';
+@import './foundation/mixin';
+@import './foundation/function';
+
+*{ font-family: aktiv-grotesk, "Noto Sans Japanese", sns-serif; }
+.row{ margin: 0; }
+
+.c-error{
+  background-color: $_red;
+  color: $_white;
+  .v-card__title{
+    font-size: map-get($_font-size, md);
+  }
+}

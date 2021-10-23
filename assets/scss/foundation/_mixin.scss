@@ -1,0 +1,408 @@
+@mixin translate3d($translate3d...) {
+	// defining prefixes so we can use them in mixins below
+	$prefixes: ("-webkit-", "-moz-", "" );
+	@each $prefix in $prefixes {
+		#{$prefix}transform: translate3d($translate3d);
+	}
+}
+@mixin transition($transition...) {
+	// defining prefixes so we can use them in mixins below
+	$prefixes: ("-webkit-", "-moz-", "" );
+	@each $prefix in $prefixes {
+		#{$prefix}transition: $transition;
+	}
+}
+@mixin flex($inline: false){
+  // defining prefixes so we can use them in mixins below
+  $prefixes: ("-webkit-", "-ms-", "" );
+
+  @if ($inline == true){
+    @each $prefix in $prefixes {
+      display: #{$prefix}inline-flex;
+    }
+  } @else {
+    @each $prefix in $prefixes {
+      display: #{$prefix}flex;
+    }
+  }
+}
+@mixin justify-content($justify-content...) {
+	// defining prefixes so we can use them in mixins below
+	$prefixes: ("-webkit-", "-moz-", "" );
+	@each $prefix in $prefixes {
+		#{$prefix}justify-content: $justify-content;
+	}
+}
+@mixin align-items($align-items...) {
+	// defining prefixes so we can use them in mixins below
+	$prefixes: ("-webkit-", "-moz-", "" );
+	@each $prefix in $prefixes {
+		#{$prefix}align-items: $align-items;
+	}
+}
+@mixin centerByFlex {
+  @include flex;
+  @include justify-content(center);
+  @include align-items(center);
+}
+@mixin rotate($rotate...) {
+	// defining prefixes so we can use them in mixins below
+	$prefixes: ("-webkit-", "-moz-", "" );
+	@each $prefix in $prefixes {
+		#{$prefix}transform: rotate($rotate);
+	}
+}
+@mixin scale($scale...) {
+	// defining prefixes so we can use them in mixins below
+	$prefixes: ("-webkit-", "-moz-", "" );
+	@each $prefix in $prefixes {
+		#{$prefix}transform: scale($scale);
+	}
+}
+
+@mixin skew($skew...) {
+	// defining prefixes so we can use them in mixins below
+	$prefixes: ("-webkit-", "-moz-", "" );
+	@each $prefix in $prefixes {
+		#{$prefix}transform: skew($skew);
+	}
+}
+
+@mixin ofi($type: cover){
+  object-fit: $type;
+  object-position: center;
+}
+
+@mixin _p-box() {
+  display: block;
+  @include _clearfix;
+}
+
+@mixin _p-box__image($margin-bottom: null) {
+  position: relative;
+  display: block;
+  margin-bottom: $margin-bottom;
+  > img {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@mixin _p-box__labels() {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-left: 0;
+  list-style-type: none;
+  @include _clearfix;
+}
+
+@mixin _p-box__label() {
+  float: left;
+}
+
+@mixin _p-box__content($padding: 0) {
+  display: block;
+  padding: $padding;
+  > :first-child {
+    margin-top: 0;
+  }
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+// @desc - クリアーフィックスのスタイルを挿入します。
+// @param {Bool, String} - 引数$importantに"important"を渡すと`!important`の指定ができます。
+// @example scss - Usage
+//
+// .foo { @include _clearfix; }
+// .bar { @include _clearfix(important); }
+//
+// @example css - CSS output
+// .foo:after {
+//   content: "";
+//   display: block;
+//   clear: both;
+// }
+// .bar:after {
+//   content: "" !important;
+//   display: block !important;
+//   clear: both !important;
+// }
+@mixin _clearfix($important: false) {
+  @if ($important == "important") {
+    $important: unquote("!important");
+  } @else {
+    $important: null;
+  }
+  &:after {
+    content: "" $important;
+    display: block $important;
+    clear: both $important;
+  }
+}
+@mixin _c-flag() {
+  display: table;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+// @param $gutter - 画像とテキストの間の余白を指定します。
+@mixin _c-flag__image($gutter) {
+  display: table-cell;
+  width: 1px;
+  margin: 0;
+  padding: 0;
+  padding-right: $gutter;
+  vertical-align: top;
+  > img {
+    max-width: none;
+  }
+}
+
+@mixin _c-flag__body() {
+  display: table-cell;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+@mixin _c-layout() {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  list-style-type: none;
+}
+
+@mixin _c-layout__item() {
+  display: inline-block;
+  width: 100%;
+  font-size: medium;
+  font-size: 1rem;
+  vertical-align: top;
+}
+@mixin _c-layout() {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  list-style-type: none;
+}
+
+@mixin _c-layout__item() {
+  display: inline-block;
+  width: 100%;
+  font-size: medium;
+  font-size: 1rem;
+  vertical-align: top;
+}
+@mixin _c-list-mark() {
+  display: table;
+  @include _c-list-unstyled();
+}
+
+@mixin _c-list-mark__item() {
+  display: table-row;
+}
+
+@mixin _c-list-mark__icon($padding-right: 0.25em) {
+  display: table-cell;
+  width: 1em;
+  padding-right: $padding-right;
+  text-align: center;
+}
+
+@mixin _c-list-mark__items() {
+  @include _c-list-unstyled();
+}
+@mixin _c-list-unstyled() {
+  padding-left: 0;
+  list-style-type: none;
+}
+@mixin _c-media() {
+  display: block;
+  margin: 0;
+  padding: 0;
+  @include _clearfix;
+}
+
+// @param $gutter - 画像とテキストの間の余白を指定します。
+@mixin _c-media__image($gutter) {
+  float: left;
+  margin: 0;
+  margin-right: $gutter;
+  padding: 0;
+  > img {
+    display: block;
+  }
+}
+
+// @param $overflow(null) - テキストを画像に回り込みさせる場合は`hidden`を指定します。
+@mixin _c-media__body($overflow: null) {
+  display: block;
+  margin: 0;
+  padding: 0;
+  overflow: $overflow;
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+// @desc - メディアクエリを`max-width`で挿入します。
+// @param {String} $breakpoint [$_default-breakpoint] - 引数に変数のキーワードを渡します。
+// @see - $_breakpoint-down
+// @example scss - Usage
+// .foo {
+//   color: red;
+//   @include mq-down {
+//     color: blue;
+//   }
+// }
+// @example css - CSS output
+// .foo {
+//   color: red;
+// }
+// @media screen and (max-width: 767px) {
+//   .foo {
+//     color: blue;
+//   }
+// }
+@mixin mq-down($breakpoint: $_default-breakpoint) {
+  @if map-has-key($_breakpoint-down, $breakpoint) {
+    @media #{inspect(map-get($_breakpoint-down, $breakpoint))} {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+    + "Please make sure it is defined in `$_breakpoint-down` map.";
+  }
+}
+// @desc - メディアクエリを`min-width`で挿入します。
+// @param {String} $breakpoint [$_default-breakpoint] - 引数に変数のキーワードを渡します。
+// @see - $_breakpoint-up
+// @example scss - Usage
+// .foo {
+//   color: red;
+//   @include mq-up {
+//     color: blue;
+//   }
+// }
+// @example css - CSS output
+// .foo {
+//   color: red;
+// }
+// @media screen and (min-width: 768px) {
+//   .foo {
+//     color: blue;
+//   }
+// }
+@mixin mq-up($breakpoint: $_default-breakpoint) {
+  @if map-has-key($_breakpoint-up, $breakpoint) {
+    @media #{inspect(map-get($_breakpoint-up, $breakpoint))} {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+    + "Please make sure it is defined in `$_breakpoint-up` map.";
+  }
+}
+// @desc - マウスオーバーなどのイベントをまとめて指定します。
+// @author - Harry Roberts
+// @param {Bool} $self [false] - Whether or not to include current selector
+// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+// @example scss - Usage
+// .foo {
+//   @include _on-event{
+//     background-color: red;
+//   }
+// }
+// @example css - CSS output
+// .foo:hover, .foo:active, .foo:focus {
+//   background-color: red;
+// }
+@mixin _on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+@mixin _c-ratio($padding-bottom: 100%) {
+  display: block;
+  overflow: hidden;
+  position: relative;
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    padding-bottom: unquote($padding-bottom);
+  }
+}
+
+@mixin _c-ratio__content() {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+// @desc - class名とルールセットを指定することで、レスポンシブに対応したスタイルを生成します。
+// @param {String} - 共通のclass名をクウォートとドットをつけて渡します（e.g. `.foo`）。
+// @param {Strind} - 使用するブレイクポイントを定義した変数を渡します。
+// @see - foundation/variable/_breakpoint.scss
+// @example scss - Usage
+// @include _responsive(".display-none") {
+//   display: none;
+// }
+// @example css - CSS output
+// .display-none {
+//   display: none;
+// }
+// @media screen and (min-width: 400px) {
+//   .display-none-sm {
+//     display: none;
+//   }
+// }
+@mixin _responsive($class, $bp: $_breakpoint-up) {
+  #{$class} {
+    @content;
+  }
+  @each $suffix, $value in $bp {
+    @media #{$value} {
+      #{$class}-#{$suffix} {
+        @content;
+      }
+    }
+  }
+}
+// @desc - 表示だけをせずに、スクリーンリーダーにだけ対応したい場合に使用します。
+// @param {String} - 引数に"important"を渡すと`!important`の指定ができます。
+@mixin _sr-only($important: false) {
+  @if ($important == "important") {
+    $important: unquote("!important");
+  } @else {
+    $important: null;
+  }
+  position: absolute $important;
+  width: 1px $important;
+  height: 1px $important;
+  margin: -1px $important;
+  border: 0 $important;
+  overflow: hidden $important;
+  padding: 0 $important;
+  clip: rect(0, 0, 0, 0) $important;
+}

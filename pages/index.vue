@@ -1,77 +1,93 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card class="logo py-4 d-flex justify-center">
-        <NuxtLogo />
-        <VuetifyLogo />
-      </v-card>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation
-            </a>.
-          </p>
-          <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord
-            </a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board
-            </a>.
-          </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            to="/inspire"
-          >
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+  <div class="kv">
+    <img src="~/assets/images/kv.jpg" alt="" class="kv-bg">
+    <div class="kv-content">
+      <h1 class="kv-content-title">
+        トレーニング管理、しませんか？
+      </h1>
+      <p class="kv-content-description">
+        あすトレは将来の筋トレスケジュールや目標設定<br>
+        メニュー管理・ボリューム管理やプロテイン管理まで<br>
+        あなたのトレーニングを管理して理想の体に近づけるサービスです。
+      </p>
+      <nuxt-link class="kv-content-link mod__login" to="/login">
+        ログイン
+      </nuxt-link>
+      <nuxt-link class="kv-content-link mod__signup" to="/signup">
+        会員登録
+      </nuxt-link>
+    </div>
+  </div>
 </template>
+
+<script lang="ts">
+import { defineComponent } from '@vue/composition-api'
+
+export default defineComponent({
+  layout: 'beforeLogin',
+  setup () {
+  }
+})
+</script>
+
+<style lang="scss" scoped>
+  @import '~/assets/scss/foundation/variable';
+  @import '~/assets/scss/foundation/mixin';
+  .kv{
+    height: calc(100vh - 64px);
+    width: 100%;
+    position: relative;
+    &::before{
+      content: "";
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      position: absolute;
+      background: rgba($_black, 0.5);
+      top: 0;
+      left: 0;
+    }
+    &-bg{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      z-index: 1;
+    }
+    &-content{
+      @include centerByFlex;
+      flex-direction: column;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      color: $_white;
+      &-title{
+        text-align: center;
+        margin-bottom: 32px;
+      }
+      &-description{
+        text-align: center;
+        margin-bottom: 32px;
+        line-height: 2;
+      }
+      &-link{
+        @include centerByFlex;
+        width: 256px;
+        height: 56px;
+        border-radius: 4px;
+        margin-bottom: 16px;
+        &.mod__login{
+          background: $_red;
+          color: $_white;
+        }
+        &.mod__signup{
+          background: $_yellow;
+          color: $_black;
+        }
+      }
+    }
+  }
+</style>
