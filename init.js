@@ -9,16 +9,16 @@ import VueCompositionApi from '@vue/composition-api'
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: 'AIzaSyD9FmWd3qn9dAEtqIXstAAOox4YFtIRLm8',
-  authDomain: 'doyouhave-muscle.firebaseapp.com',
-  projectId: 'doyouhave-muscle',
-  storageBucket: 'doyouhave-muscle.appspot.com',
-  messagingSenderId: '444191949429',
-  appId: '1:444191949429:web:0f2cb5c0880aff47edae3c'
-}
 // Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig)
+console.log(process.env)
+const firebaseApp = initializeApp({
+  apiKey: process.env.FirebaseApiKey,
+  authDomain: process.env.FirebaseAuthDomain,
+  projectId: process.env.FirebaseProjectId,
+  storageBucket: process.env.FirebaseStorageBucket,
+  messagingSenderId: process.env.FirebaseMessagingSenderId,
+  appId: process.env.FirebaseAppId
+})
 const db = getFirestore()
 Vue.prototype.$firebase = {
   db,

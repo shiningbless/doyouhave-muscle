@@ -1,5 +1,41 @@
 # nuxt-muscle-app
 
+## doyouhave-muscleについて
+
+筋トレ管理アプリです。
+
+何か形にしたくて作りましたが、心が折れてGoogleログインまでしか実装していません。今後時間があれば完成させたいと思います。
+
+## 現在の機能
+
+Googleログイン
+
+メールアドレスログイン
+
+のみ😭
+
+## tabian卒業要件について
+
+✅Nuxt.jsでページ・コンポーネントを作成できること
+
+✅emit を使えること
+
+✅v-model を理解していること
+
+✅v-bind="boundedVar" を使えること
+
+✅<slot name="my-slot" v-bind="boundedVar"> と <template #my-slot="boundedVar"> を使えること
+
+🔲watch を使えること ←このアプリでは使用していませんが、OptionalAPI・CompositionAPIどちらでも使用可能です。
+
+✅emit('input') を使えること
+
+✅Nuxt.jsのstoreでモジュールを作成できること
+
+✅基本的なTypeScriptの読み書きができること
+
+🔲const value: any のように、any 型を使わないで書けること ← このアプリでは使用していませんがanyを使用せずにかけます。
+
 ## Build Setup
 
 ```bash
